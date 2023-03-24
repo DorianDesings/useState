@@ -1,5 +1,14 @@
 import { useState } from 'react';
-const tabsInfo = ['Tab 1', 'Tab 2', 'Tab 3'];
+import { v4 } from 'uuid';
+import {
+	StyledInfo,
+	StyledInfoContainer,
+	StyledList,
+	StyledTab,
+	TabsContainer
+} from './styles';
+const tabs = ['Tab 1', 'Tab 2', 'Tab 3'];
+const tabsInfo = ['Info 1', 'Info 2', 'Info 3'];
 
 const Tabs = () => {
 	const [tabActive, setTabActive] = useState(0);
@@ -25,24 +34,37 @@ const Tabs = () => {
 					Tab 3
 				</span>
 			</div>
-			{/* {tabActive === 1 && (
+			{tabActive === 0 && (
 				<div>
 					<p>TAB 1</p>
 				</div>
 			)}
-			{tabActive === 2 && (
+			{tabActive === 1 && (
 				<div>
 					<p>TAB 2</p>
 				</div>
 			)}
-			{tabActive === 3 && (
+			{tabActive === 2 && (
 				<div>
 					<p>TAB 3</p>
 				</div>
-			)} */}
-			<div>
-				<p>{tabsInfo[tabActive]}</p>
-			</div>
+			)}
+			<TabsContainer>
+				<StyledList>
+					{tabs.map((tab, index) => (
+						<StyledTab
+							key={v4()}
+							onClick={() => setTabActive(index)}
+							active={index === tabActive}
+						>
+							{tab}
+						</StyledTab>
+					))}
+				</StyledList>
+				<StyledInfoContainer>
+					<StyledInfo>{tabsInfo[tabActive]}</StyledInfo>
+				</StyledInfoContainer>
+			</TabsContainer>
 		</>
 	);
 };

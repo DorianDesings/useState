@@ -16,6 +16,7 @@ const Tabs = () => {
 	const [tabActive, setTabActive] = useState(0);
 	return (
 		<>
+			<h1>Tabs</h1>
 			<div className={styles['tabs-container']}>
 				<ul className={styles.list}>
 					{tabs.map((tab, index) => (
